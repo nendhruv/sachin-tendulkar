@@ -110,7 +110,7 @@ controller('statsController', function($scope) {
 	      .attr("y", 6)
 	      .attr("dy", ".71em")
 	      .style("text-anchor", "end")
-	      .text("Frequency");
+	      .text("Wickets");
 
 	  svg.selectAll(".bar")
 	      .data(data)
