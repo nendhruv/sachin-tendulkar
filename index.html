@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sachin Tendulkar</title>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+</head>
+
+<body ng-app="TendulkarApp" ng-controller="statsController" ng-init="battingStats('All');" ng-cloak>
+
+  <div class="row header">
+    <h1 class="col-sm-4">Sachin Tendulkar</h1>
+      <div class="stats col-sm-8">
+        <div class="col-md-2 col-sm-2 col-xs-1">
+          <span>Inns</span>
+          <br>
+          <span class="stat-value">{{innings}}</span>  
+        </div> 
+        <div ng-if="bowling == 1" class="col-md-2 col-sm-2 col-xs-1">
+          <span>Avg</span>
+          <br>
+          <span class="stat-value">{{bowlingAverage}}</span>
+        </div>
+        <div ng-if="bowling == 1" class="col-md-2 col-sm-2 col-xs-1">
+          <span>Wkts</span>
+          <br>
+          <span class="stat-value">{{wickets}}</span>
+        </div>
+        <div ng-if="batting == 1" class="col-md-2 col-sm-2 col-xs-1">
+          <span>Runs</span>
+          <br>
+          <span class="stat-value">{{runs}}</span>
+        </div>
+        <div ng-if="batting == 1" class="col-md-2 col-sm-2 col-xs-1">
+          <span>Avg</span>
+          <br>
+          <span class="stat-value">{{battingAverage}}</span>
+        </div>
+        <div ng-if="batting == 1" class="col-md-2 col-sm-2 col-xs-1">
+          <span>50s</span>
+          <br>
+          <span class="stat-value">{{fifty}}</span>
+        </div>
+        <div ng-if="batting == 1" class="col-md-2 col-sm-2 col-xs-1">
+          <span>100s</span>
+          <br>
+          <span class="stat-value">{{hundered}}</span>
+        </div>
+        <div ng-if="batting == 1" class="col-md-2 col-sm-2 col-xs-1">
+          <span>HS</span>
+          <br>
+          <span class="stat-value">{{highestScore}}</span>
+        </div>
+      </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-3 sidebar">
+      <div>
+        <input ng-checked="true" type="radio" name="batandbowl" class="col-sm-1 col-sm-offset-2" ng-click="battingStats('All');"> <label>Batting </label> </input><br><br>
+        <input type="radio" name="batandbowl" class="col-sm-1 col-sm-offset-2" ng-click="bowlingStats('All');"> <label> Bowling </label> </input>
+      </div>
+      <div>
+        <div class="col-sm-offset-2">Opposition</div>
+          <select class="col-sm-8 col-sm-offset-2" ng-model="opposition" ng-change="update(opposition, batting, bowling)">
+            <option value="All" selected = "selected">All</option>
+            <option value="Pakistan">Pakistan</option>
+            <option value="Australia">Australia</option>
+            <option value="New Zealand">New Zealand</option>
+            <option value="Sri Lanka">Sri Lanka</option>
+            <option value="England">England</option>
+            <option value="South Africa">South Africa</option>
+            <option value="Bangladesh">Bangladesh</option>
+            <option value="West Indies">West Indies</option>
+            <option value="Zimbabwe">Zimbabwe</option>
+            <option value="U.A.E">U.A.E</option>
+            <option value="Kenya">Kenya</option>
+            <option value="Netherlands">Netherlands</option>
+            <option value="Namibia">Namibia</option>
+            <option value="Ireland">Ireland</option>
+            <option value="Bermuda">Bermuda</option>
+          </select>
+      </div>
+      <br>
+      <br>
+      <div>
+         <p>As we can see from the visualization Sachin Tendulkar has great numbers in both batting and bowling against all the opposition teams.</p>
+         <p>With <b>18,426</b> runs, <b>49</b> 100s, <b>96</b> 50s and <b>154</b> wickets we can easily say that sachin is can be regarded as the greatest cricketer of all time. </p>
+      </div>
+    </div>  
+    <div  class="col-sm-9">
+
+      <div id="visualization" class="col-sm-12">
+    
+      </div>
+
+      <ul class="label-graph">
+        <li><div class="won"></div><span>WON</span></li>
+        <li><div class="lost"></div><span>LOST</span></li>
+        <li><div class="no-result"></div><span>NO RESULT</span></li>
+      </ul>
+    </div>
+
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.min.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/controllers.js"></script>
+</body>
+</html>
